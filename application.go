@@ -1,45 +1,49 @@
-/**
- * Go company application service
- * @author Diego Andre Poli <diegoandrepoli@gmail.com>
- */
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/gorilla/mux"
-	"net/http"
 	"log"
+	"net/http"
 )
 
-/**
- * Main execution
- */
-func main(){
-	serverHandler()
+// Gompany structure
+type Company struct {
+	ID       string   `json:"id,omitempty"`
+	Name    string   `json:"name,omitempty"`
+	Zip  string   `json:"zip,omitempty"`
+	Website  string   `json:"website,omitempty"`
 }
 
 /**
- * Create server handler
+ * Main server
  */
-func serverHandler(){
+func main() {
 	var router = mux.NewRouter()
-	router.HandleFunc("/", home).Methods("GET")
 
-	fmt.Println("Running server server!")
-	log.Fatal(http.ListenAndServe(":3030", router))
+	router.HandleFunc("/", index).Methods("GET")
+	router.HandleFunc("/company", postCompanyApi).Methods("POST")
+
+	fmt.Println("Running server!")
+	log.Fatal(http.ListenAndServe(":8080", router))
 }
 
 /**
- * Get index message
- * @return service message as string
+ * Main gompany action
  */
-func getIndexMessage() string {
-	return "Welcome to company!"
+func index(w http.ResponseWriter, r *http.Request){
+	fmt.Fprintln(w, "Hello, welcome to Gompany!")
 }
 
+
 /**
- * Home aplication response message
+ * Post company api
  */
-func home(w http.ResponseWriter, r *http.Request){
-	fmt.Fprintln(w, getIndexMessage())
+func postCompanyApi(w http.ResponseWriter, r *http.Request) {
+	var keep Company
+	_ = json.NewDecoder(r.Body).Decode(&keep)
+	json.NewEncoder(w).Encode(keep)
 }
+
+

@@ -69,6 +69,16 @@ func saveCompany(company Company) Company {
 }
 
 /**
+ * Save company list
+ * @param list of company
+ */
+func saveCompanyList(companies []Company){
+	for _, company := range companies {
+		saveCompany(company)
+	}
+}
+
+/**
  * Update company
  * @param company
  * @return company updated
@@ -96,4 +106,36 @@ func updateCompany(company Company) Company {
 	}
 
 	return company
+}
+
+func updateCompanyByName(company Company) Company {
+	//open database connection
+	db, err := sql.Open(getDatabase(), getConnection())
+
+	//abort on connection error
+	if err != nil {
+		panic(err)
+	}
+
+	defer db.Close()
+
+	//create query
+	sqlStatement := `UPDATE collector.companies set name=$1, zip=$2, website=$3 WHERE name=$4`
+
+	//execute statement
+	_, err = db.Exec(sqlStatement, company.Name, company.Zip, company.Website, company.Name)
+
+	//abort on insert error
+	if err != nil {
+		panic(err)
+	}
+
+	return company
+}
+
+
+func updateCompanyByNameList(companies []Company){
+	for _, company := range companies {
+		updateCompanyByName(company)
+	}
 }

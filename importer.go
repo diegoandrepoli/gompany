@@ -1,7 +1,7 @@
 
 package main
 
-import(
+import (
 
 )
 
@@ -13,13 +13,20 @@ type Company struct {
 	Website  string   `json:"website,omitempty"`
 }
 
+/**
+ * Main importer
+ * Execute importer from file catalog name and client file name
+ */
 func main(){
 
+	//get application configurations
+	var configs = getConfiguration()
+
 	//save csv company list
-	saveCompanyList(readCsv("q1_catalog.csv"))
+	saveCompanyList(readCsv(configs.FileCatalogName))
 
 	//update csv company list
-	updateCompanyByNameList(readCsv("q2_clientData.csv"))
+	updateCompanyByNameList(readCsv(configs.FileClientName))
 }
 
 

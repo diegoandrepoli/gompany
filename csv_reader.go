@@ -11,10 +11,6 @@ import (
 )
 
 
-func createCompanyAsLine(){
-
-}
-
 func readCsv(filename string) []Company{
 	csvFile, _ := os.Open(filename)
 

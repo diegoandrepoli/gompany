@@ -67,3 +67,33 @@ func saveCompany(company Company) Company {
 
 	return company
 }
+
+/**
+ * Update company
+ * @param company
+ * @return company updated
+ */
+func updateCompany(company Company) Company {
+	//open database connection
+	db, err := sql.Open(getDatabase(), getConnection())
+
+	//abort on connection error
+	if err != nil {
+		panic(err)
+	}
+
+	defer db.Close()
+
+	//create query
+	sqlStatement := `UPDATE collector.companies set name=$1, zip=$2, website=$3 WHERE id=$4`
+
+	//execute statement
+	_, err = db.Exec(sqlStatement, company.Name, company.Zip, company.Website, company.ID)
+
+	//abort on insert error
+	if err != nil {
+		panic(err)
+	}
+
+	return company
+}

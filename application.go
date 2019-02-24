@@ -10,7 +10,7 @@ import (
 
 // Gompany structure
 type Company struct {
-	ID       int   `json:"id,omitempty"`
+	ID       int      `json:"id,omitempty"`
 	Name     string   `json:"name,omitempty"`
 	Zip      string   `json:"zip,omitempty"`
 	Website  string   `json:"website,omitempty"`
@@ -23,7 +23,8 @@ func main() {
 	var router = mux.NewRouter()
 
 	router.HandleFunc("/", index).Methods("GET")
-	router.HandleFunc("/company", postCompanyApi).Methods("POST")
+	router.HandleFunc("/company", saveCompanyApi).Methods("POST")
+	router.HandleFunc("/company", updateCompanyApi).Methods("PUT")
 
 	fmt.Println("Running server!")
 	log.Fatal(http.ListenAndServe(":8080", router))
@@ -40,7 +41,7 @@ func index(w http.ResponseWriter, r *http.Request){
 /**
  * Post company api
  */
-func postCompanyApi(w http.ResponseWriter, r *http.Request) {
+func saveCompanyApi(w http.ResponseWriter, r *http.Request) {
 	var company Company
 
 	//decode api content
@@ -48,6 +49,19 @@ func postCompanyApi(w http.ResponseWriter, r *http.Request) {
 
 	//save and return company
 	json.NewEncoder(w).Encode(saveCompany(company))
+}
+
+/**
+ * Put as update company
+ */
+func updateCompanyApi(w http.ResponseWriter, r *http.Request) {
+	var company Company
+
+	//decode api content
+	_ = json.NewDecoder(r.Body).Decode(&company)
+
+	//save and return company
+	json.NewEncoder(w).Encode(updateCompany(company))
 }
 
 

@@ -10,9 +10,9 @@ import (
 
 // Gompany structure
 type Company struct {
-	ID       string   `json:"id,omitempty"`
-	Name    string   `json:"name,omitempty"`
-	Zip  string   `json:"zip,omitempty"`
+	ID       int   `json:"id,omitempty"`
+	Name     string   `json:"name,omitempty"`
+	Zip      string   `json:"zip,omitempty"`
 	Website  string   `json:"website,omitempty"`
 }
 
@@ -41,9 +41,13 @@ func index(w http.ResponseWriter, r *http.Request){
  * Post company api
  */
 func postCompanyApi(w http.ResponseWriter, r *http.Request) {
-	var keep Company
-	_ = json.NewDecoder(r.Body).Decode(&keep)
-	json.NewEncoder(w).Encode(keep)
+	var company Company
+
+	//decode api content
+	_ = json.NewDecoder(r.Body).Decode(&company)
+
+	//save and return company
+	json.NewEncoder(w).Encode(saveCompany(company))
 }
 
 

@@ -1,5 +1,5 @@
 
-package configuration
+package configs
 
 import (
 	"gopkg.in/yaml.v2"

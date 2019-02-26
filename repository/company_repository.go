@@ -39,7 +39,7 @@ func getDatabase() string {
  * @param company
  * @retrun company with database id
  */
-func saveCompany(company model.Company) model.Company {
+func SaveCompany(company model.Company) model.Company {
 	//open database connection
 	db, err := sql.Open(getDatabase(), getConnection())
 
@@ -73,9 +73,9 @@ func saveCompany(company model.Company) model.Company {
  * Save company list
  * @param list of company
  */
-func saveCompanyList(companies []model.Company){
+func SaveCompanyList(companies []model.Company){
 	for _, company := range companies {
-		saveCompany(company)
+		SaveCompany(company)
 	}
 }
 
@@ -84,7 +84,7 @@ func saveCompanyList(companies []model.Company){
  * @param company
  * @return company updated
  */
-func updateCompany(company model.Company) model.Company {
+func UpdateCompany(company model.Company) model.Company {
 	//open database connection
 	db, err := sql.Open(getDatabase(), getConnection())
 
@@ -109,7 +109,7 @@ func updateCompany(company model.Company) model.Company {
 	return company
 }
 
-func updateCompanyByName(company model.Company) model.Company {
+func UpdateCompanyByName(company model.Company) model.Company {
 	//open database connection
 	db, err := sql.Open(getDatabase(), getConnection())
 
@@ -135,8 +135,8 @@ func updateCompanyByName(company model.Company) model.Company {
 }
 
 
-func updateCompanyByNameList(companies []model.Company){
+func UpdateCompanyByNameList(companies []model.Company){
 	for _, company := range companies {
-		updateCompanyByName(company)
+		UpdateCompanyByName(company)
 	}
 }

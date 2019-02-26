@@ -1,8 +1,9 @@
 package main
 
-import(
+import (
 	"database/sql"
 	"fmt"
+	"github.com/diegoandrepoli/gompany/model"
 	_ "github.com/lib/pq"
 )
 
@@ -38,7 +39,7 @@ func getDatabase() string {
  * @param company
  * @retrun company with database id
  */
-func saveCompany(company Company) Company {
+func saveCompany(company model.Company) model.Company {
 	//open database connection
 	db, err := sql.Open(getDatabase(), getConnection())
 
@@ -72,7 +73,7 @@ func saveCompany(company Company) Company {
  * Save company list
  * @param list of company
  */
-func saveCompanyList(companies []Company){
+func saveCompanyList(companies []model.Company){
 	for _, company := range companies {
 		saveCompany(company)
 	}
@@ -83,7 +84,7 @@ func saveCompanyList(companies []Company){
  * @param company
  * @return company updated
  */
-func updateCompany(company Company) Company {
+func updateCompany(company model.Company) model.Company {
 	//open database connection
 	db, err := sql.Open(getDatabase(), getConnection())
 
@@ -108,7 +109,7 @@ func updateCompany(company Company) Company {
 	return company
 }
 
-func updateCompanyByName(company Company) Company {
+func updateCompanyByName(company model.Company) model.Company {
 	//open database connection
 	db, err := sql.Open(getDatabase(), getConnection())
 
@@ -134,7 +135,7 @@ func updateCompanyByName(company Company) Company {
 }
 
 
-func updateCompanyByNameList(companies []Company){
+func updateCompanyByNameList(companies []model.Company){
 	for _, company := range companies {
 		updateCompanyByName(company)
 	}

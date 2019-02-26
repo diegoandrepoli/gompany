@@ -3,18 +3,11 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/diegoandrepoli/gompany/model"
 	"github.com/gorilla/mux"
 	"log"
 	"net/http"
 )
-
-// Gompany structure
-type Company struct {
-	ID       int      `json:"id,omitempty"`
-	Name     string   `json:"name,omitempty"`
-	Zip      string   `json:"zip,omitempty"`
-	Website  string   `json:"website,omitempty"`
-}
 
 /**
  * Main server
@@ -37,12 +30,11 @@ func index(w http.ResponseWriter, r *http.Request){
 	fmt.Fprintln(w, "Hello, welcome to Gompany!")
 }
 
-
 /**
  * Post company api
  */
 func saveCompanyApi(w http.ResponseWriter, r *http.Request) {
-	var company Company
+	var company model.Company
 
 	//decode api content
 	_ = json.NewDecoder(r.Body).Decode(&company)
@@ -55,7 +47,7 @@ func saveCompanyApi(w http.ResponseWriter, r *http.Request) {
  * Put as update company
  */
 func updateCompanyApi(w http.ResponseWriter, r *http.Request) {
-	var company Company
+	var company model.Company
 
 	//decode api content
 	_ = json.NewDecoder(r.Body).Decode(&company)

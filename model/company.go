@@ -1,12 +1,14 @@
 
 package model
 
+// Gompany structure
 type Company struct {
-	id      string  `json:"id,omitempty"`
-	name    string  `json:"title,omitempty"`
-	zip     string  `json:"message,omitempty"`
-	website string  `json:"message,omitempty"`
+	ID       int      `json:"id,omitempty"`
+	Name     string   `json:"name,omitempty"`
+	Zip      string   `json:"zip,omitempty"`
+	Website  string   `json:"website,omitempty"`
 }
+
 
 
 

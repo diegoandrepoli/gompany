@@ -7,7 +7,7 @@ import (
 	"io"
 	"log"
 	"os"
-	"../model"
+	"github.com/diegoandrepoli/gompany/model"
 )
 
 /**

@@ -1,5 +1,5 @@
 
-package main
+package csv
 
 import (
 	"bufio"
@@ -7,7 +7,7 @@ import (
 	"io"
 	"log"
 	"os"
-	"./model"
+	"../model"
 )
 
 /**
@@ -37,7 +37,7 @@ func getCsvReader(filename string) *csv.Reader {
  * @param name as csv file
  * @return company list
  */
-func readCsv(filename string) []model.Company{
+func ReadCsv(filename string) []model.Company{
 
 	//get file
 	reader := getCsvReader(filename)

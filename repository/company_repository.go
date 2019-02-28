@@ -7,6 +7,11 @@ import (
 	_ "github.com/lib/pq"
 )
 
+type repository struct {
+	saveCompany model.Company
+	updateCompany model.Company
+}
+
 /**
  * Database configuration
  */
@@ -39,7 +44,7 @@ func getDatabase() string {
  * @param company
  * @retrun company with database id
  */
-func SaveCompany(company model.Company) model.Company {
+func saveCompany(company model.Company) model.Company {
 	//open database connection
 	db, err := sql.Open(getDatabase(), getConnection())
 
@@ -75,7 +80,7 @@ func SaveCompany(company model.Company) model.Company {
  */
 func SaveCompanyList(companies []model.Company){
 	for _, company := range companies {
-		SaveCompany(company)
+		saveCompany(company)
 	}
 }
 
@@ -84,7 +89,7 @@ func SaveCompanyList(companies []model.Company){
  * @param company
  * @return company updated
  */
-func UpdateCompany(company model.Company) model.Company {
+func updateCompany(company model.Company) model.Company {
 	//open database connection
 	db, err := sql.Open(getDatabase(), getConnection())
 

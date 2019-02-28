@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/diegoandrepoli/gompany/model"
+	"github.com/diegoandrepoli/gompany/repository"
 	"github.com/gorilla/mux"
 	"log"
 	"net/http"
@@ -39,8 +40,9 @@ func saveCompanyApi(w http.ResponseWriter, r *http.Request) {
 	//decode api content
 	_ = json.NewDecoder(r.Body).Decode(&company)
 
+
 	//save and return company
-	json.NewEncoder(w).Encode(saveCompany(company))
+	json.NewEncoder(w).Encode(repository.SaveCompany(company))
 }
 
 /**
@@ -53,7 +55,7 @@ func updateCompanyApi(w http.ResponseWriter, r *http.Request) {
 	_ = json.NewDecoder(r.Body).Decode(&company)
 
 	//save and return company
-	json.NewEncoder(w).Encode(updateCompany(company))
+	json.NewEncoder(w).Encode(repository.UpdateCompany(company))
 }
 
 

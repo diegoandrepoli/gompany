@@ -2,7 +2,9 @@
 package main
 
 import (
-
+	"github.com/diegoandrepoli/gompany/repository"
+	"github.com/diegoandrepoli/gompany/csv"
+	"github.com/diegoandrepoli/gompany/configs"
 )
 
 // Gompany structure
@@ -20,13 +22,13 @@ type Company struct {
 func main(){
 
 	//get application configurations
-	var configs = getConfiguration()
+	var configs = configs.GetConfiguration()
 
 	//save csv company list
-	saveCompanyList(readCsv(configs.FileCatalogName))
+	repository.SaveCompanyList(csv.ReadCsv(configs.FileCatalogName))
 
 	//update csv company list
-	updateCompanyByNameList(readCsv(configs.FileClientName))
+	repository.UpdateCompanyByNameList(filer.ReadCsv(configs.FileClientName))
 }
 
 

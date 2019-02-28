@@ -47,7 +47,7 @@ func (c *conf) getConf() *conf {
  * Get configurations
  * @return all configuration in config file
  */
-func getConfiguration() conf {
+func GetConfiguration() conf {
 	var config conf
 
 	//get configurations

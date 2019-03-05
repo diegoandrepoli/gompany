@@ -15,7 +15,7 @@ import (
  * @param name as csv file
  * @return csv file reader
  */
-func getCsvReader(filename string, comma string) *csv.Reader {
+func getCsvReader(filename string, comma rune) *csv.Reader {
 	//open csv file
 	csvFile, _ := os.Open(filename)
 
@@ -32,7 +32,7 @@ func getCsvReader(filename string, comma string) *csv.Reader {
  * @param name as csv file
  * @return company list
  */
-func ReadCsv(filename string, comma string) []model.Company{
+func ReadCsv(filename string, comma rune) []model.Company{
 
 	//get file
 	reader := getCsvReader(filename, comma)

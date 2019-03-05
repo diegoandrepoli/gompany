@@ -30,3 +30,47 @@ func TestCompanyModel(t *testing.T) {
 		t.Fatalf("company Website expected value 1, but got size %v", company.Website)
 	}
 }
+
+/**
+ * Test get lines by array index
+ */
+func TestGetValueArrayByIndex(t *testing.T) {
+
+	//generate list values
+	values := []string{"a", "b", "c", "d"}
+
+	//get value as list
+	var value = getValueArrayByIndex(values, 1)
+
+	//test value
+	if value != "b" {
+		t.Fatalf("Expecting comma to be a, has value: %v", value)
+	}
+}
+
+/**
+ * Test to create company by array index
+ */
+func TestCreateCompanyByArray(t *testing.T) {
+
+	//generate list values
+	values := []string{"adb", "csy", "wxd"}
+
+	//get value as list
+	var company = CreateCompanyByArray(values)
+
+	//test company name
+	if company.Name != "adb" {
+		t.Fatalf("Expecting comma to adb a, has value: %v", company.Name)
+	}
+
+	//test company zip
+	if company.Zip != "csy" {
+		t.Fatalf("Expecting comma to csy a, has value: %v", company.Zip)
+	}
+
+	//test company website
+	if company.Website != "wxd" {
+		t.Fatalf("Expecting comma to wxd a, has value: %v", company.Website)
+	}
+}

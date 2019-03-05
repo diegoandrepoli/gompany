@@ -2,13 +2,13 @@
  * Company database setup
  */
 
--- create database gompany
-create database gompany;
+-- create schema
+create schema collector;
 
--- create database companies in gompany database
-create table if not exists gompany.companies(
-	  id serial,
+-- create table
+create table if not exists collector.companies(
+	id serial,
     name text not null,
-    zip char(5) not null,
+    zip char(10) not null,
     website text
 );

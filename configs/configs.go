@@ -52,6 +52,5 @@ func GetConfiguration() conf {
 
 	//get configurations
 	config.getConf()
-
 	return config
 }

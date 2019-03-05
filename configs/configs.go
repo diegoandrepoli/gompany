@@ -18,7 +18,7 @@ var fileconfig = "config.yaml"
 type conf struct {
 	FileCatalogName string `yaml:"file.catalog.name"`
 	FileClientName  string `yaml:"file.client.name"`
-	FileConfigComma  string `yaml:"file.config.comma"`
+	FileConfigComma rune   `yaml:"file.config.comma"`
 }
 
 /**

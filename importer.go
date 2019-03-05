@@ -28,7 +28,7 @@ func main(){
 	repository.SaveCompanyList(csv.ReadCsv(configs.FileCatalogName))
 
 	//update csv company list
-	repository.UpdateCompanyByNameList(filer.ReadCsv(configs.FileClientName))
+	repository.UpdateCompanyByNameList(csv.ReadCsv(configs.FileClientName))
 }
 
 

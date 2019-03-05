@@ -63,7 +63,9 @@ func ReadCsv(filename string) []model.Company{
 	return companies
 }
 
+
 /**
+ * TODO: use function in model company
  * Get line reader by index
  * @param list of items - csv line
  * @param index of item
@@ -78,6 +80,7 @@ func getLineReaderByIndex(items []string, index int) string{
 }
 
 /**
+ * TODO: use function in model company
  * Create company by line
  * @param list of items - csv line
  * @return company
@@ -92,7 +95,3 @@ func createCompanyByLine(items []string) model.Company {
 
 	return company
 }
-
-
-
-

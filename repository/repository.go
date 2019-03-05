@@ -14,7 +14,7 @@ const (
 	host     = "localhost"
 	port     = 5432
 	user     = "postgres"
-	password = "root"
+	password = "postgres"
 	dbname   = "postgres"
 )
 
@@ -109,6 +109,11 @@ func UpdateCompany(company model.Company) model.Company {
 	return company
 }
 
+/**
+ * Update company on name based
+ * @param company model
+ * @return company model updated
+ */
 func UpdateCompanyByName(company model.Company) model.Company {
 	//open database connection
 	db, err := sql.Open(getDatabase(), getConnection())
@@ -134,7 +139,10 @@ func UpdateCompanyByName(company model.Company) model.Company {
 	return company
 }
 
-
+/**
+ * Update as company by list
+ * @param list of company model
+ */
 func UpdateCompanyByNameList(companies []model.Company){
 	for _, company := range companies {
 		UpdateCompanyByName(company)

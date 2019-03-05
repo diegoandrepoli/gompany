@@ -57,41 +57,8 @@ func ReadCsv(filename string) []model.Company{
 		}
 
 		//append new company
-		companies = append(companies, createCompanyByLine(line))
+		companies = append(companies, model.CreateCompanyByArray(line))
 	}
 
 	return companies
-}
-
-
-/**
- * TODO: use function in model company
- * Get line reader by index
- * @param list of items - csv line
- * @param index of item
- * @return value as item or empty is out of range
- */
-func getLineReaderByIndex(items []string, index int) string{
-	if(len(items) > index){
-		return items[index]
-	}
-
-	return ""
-}
-
-/**
- * TODO: use function in model company
- * Create company by line
- * @param list of items - csv line
- * @return company
- */
-func createCompanyByLine(items []string) model.Company {
-	var company model.Company
-
-	//populate company
-	company.Name = getLineReaderByIndex(items, 0)
-	company.Zip = getLineReaderByIndex(items, 1)
-	company.Website = getLineReaderByIndex(items, 2)
-
-	return company
 }

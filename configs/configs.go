@@ -19,7 +19,7 @@ type conf struct {
 	FileCatalogName        string `yaml:"file.catalog.name"`
 	FileClientName         string `yaml:"file.client.name"`
 	DatabaseConfigHost     string `yaml:"database.config.host"`
-	DatabaseConfigPort     int    `yaml:"database.config.port"`
+	DatabaseConfigPort     string `yaml:"database.config.port"`
 	DatabaseConfigUser     string `yaml:"database.config.user"`
 	DatabaseConfigPassword string `yaml:"database.config.password"`
 	DatabaseConfigDbname   string `yaml:"database.config.dbname"`

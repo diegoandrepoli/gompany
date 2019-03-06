@@ -22,7 +22,7 @@ func getConnection() string {
 	password := configs.DatabaseConfigPassword
 	dbname := configs.DatabaseConfigDbname
 
-	return fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
+	return fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
 }
 
 /**

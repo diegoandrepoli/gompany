@@ -16,6 +16,7 @@ import (
 func main() {
 	var router = mux.NewRouter()
 
+	//add routes
 	router.HandleFunc("/", index).Methods("GET")
 	router.HandleFunc("/company", saveCompanyApi).Methods("POST")
 	router.HandleFunc("/company", updateCompanyApi).Methods("PUT")

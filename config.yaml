@@ -4,3 +4,11 @@
 file.catalog.name: "q1_catalog.csv"
 file.client.name: "q2_clientData.csv"
 
+
+# database configuration
+database.config.host: "localhost"
+database.config.port: 5432
+database.config.user: "postgres"
+database.config.password: "postgres"
+database.config.dbname: "postgres"
+database.config.driver: "postgres"

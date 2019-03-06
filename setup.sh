@@ -12,8 +12,12 @@ do
 done
 
 echo "Creating postgres container"
-sudo docker-compose up -d
+docker-compose up -d
 
 echo "Start importer"
 sleep 5s
 go run importer.go
+
+
+echo "Remove imported files"
+rm *.csv

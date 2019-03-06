@@ -1,0 +1,13 @@
+# this is sample to configuration file
+
+# import files sample
+file.catalog.name: "filename.csv"
+file.client.name: "filename.csv"
+
+# database configuration sample
+database.config.host: "host"
+database.config.port: 000
+database.config.user: "user"
+database.config.password: "passw"
+database.config.dbname: "dbname"
+database.config.driver: "driver"

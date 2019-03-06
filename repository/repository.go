@@ -14,14 +14,17 @@ import (
  */
 func getConnection() string {
 
+	//get application configuration
 	var configs = configs.GetConfiguration()
 
+	//get database configuration
 	host := configs.DatabaseConfigHost
     port := configs.DatabaseConfigPort
 	user := configs.DatabaseConfigUser
 	password := configs.DatabaseConfigPassword
 	dbname := configs.DatabaseConfigDbname
 
+	//create database url
 	return fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
 }
 
@@ -30,7 +33,8 @@ func getConnection() string {
  * @return string as database type
  */
 func getDatabase() string {
-	return "postgres"
+	var configs = configs.GetConfiguration()
+	return configs.DatabaseConfigDriver
 }
 
 /**

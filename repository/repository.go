@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/diegoandrepoli/gompany/configs"
 	"github.com/diegoandrepoli/gompany/model"
+	"github.com/lib/pq"
 	_ "github.com/lib/pq"
 )
 
@@ -63,7 +64,15 @@ func SaveCompany(company model.Company) model.Company {
 
 	//abort on insert error
 	if err != nil {
-		panic(err)
+
+		//is pg error
+		if err, ok := err.(*pq.Error); ok {
+
+			//discart as duplicate row
+			if err.Code != pq.ErrorCode("23505") {
+				panic(err)
+			}
+		}
 	}
 
 	//set company id

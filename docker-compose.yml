@@ -7,8 +7,8 @@ PostgreSQL:
   environment:
     - DEBUG=false
 
-    - DB_USER=root
-    - DB_PASS=root
-    - DB_NAME=root
+    - DB_USER=postgres
+    - DB_PASS=postgres
+    - DB_NAME=postgres
   volumes:
       - ./schema/schema.sql:/docker-entrypoint-initdb.d/schema.sql

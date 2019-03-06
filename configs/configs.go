@@ -23,6 +23,7 @@ type conf struct {
 	DatabaseConfigUser     string `yaml:"database.config.user"`
 	DatabaseConfigPassword string `yaml:"database.config.password"`
 	DatabaseConfigDbname   string `yaml:"database.config.dbname"`
+	DatabaseConfigDriver   string `yaml:"database.config.driver"`
 }
 
 /**

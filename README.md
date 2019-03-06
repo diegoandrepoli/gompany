@@ -31,4 +31,4 @@ make check
 ```
 
 ## API Usage
-Application API example use on postman collection, import [here](https://www.getpostman.com/collections/97adcbee5f92d04cf5e9)
+Application API documentation usage available in Swagger, acess [here](https://app.swaggerhub.com/apis-docs/Gompany/gompany/1.0), example of usage use API available on Postman, access [here](https://www.getpostman.com/collections/97adcbee5f92d04cf5e9).

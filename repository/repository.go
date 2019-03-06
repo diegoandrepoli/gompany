@@ -3,19 +3,9 @@ package repository
 import (
 	"database/sql"
 	"fmt"
+	"github.com/diegoandrepoli/gompany/configs"
 	"github.com/diegoandrepoli/gompany/model"
 	_ "github.com/lib/pq"
-)
-
-/**
- * Database configuration
- */
-const (
-	host     = "localhost"
-	port     = 5432
-	user     = "postgres"
-	password = "postgres"
-	dbname   = "postgres"
 )
 
 /**
@@ -23,6 +13,15 @@ const (
  * @return string of database connection
  */
 func getConnection() string {
+
+	var configs = configs.GetConfiguration()
+
+	host := configs.DatabaseConfigHost
+    port := configs.DatabaseConfigPort
+	user := configs.DatabaseConfigUser
+	password := configs.DatabaseConfigPassword
+	dbname := configs.DatabaseConfigDbname
+
 	return fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
 }
 

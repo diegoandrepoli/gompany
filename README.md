@@ -29,3 +29,6 @@ To running tests application execute makefile with parameter check.
 ```console
 make check
 ```
+
+## API Usage
+Application API example use on postman collection, import [here](https://www.getpostman.com/collections/97adcbee5f92d04cf5e9)
